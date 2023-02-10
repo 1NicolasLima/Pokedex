@@ -40,3 +40,11 @@ Descobrir que não foi você quem fez seu teste
 Te desejo um ótimo teste, espero você na próxima etapa!
 
 Obrigado.
+
+-----------------------------
+
+Gostaria de fazer melhorias no visual dos cards.
+
+Melhorar o mecanismo de pesquisa, para que quando eu apagar as letras ele continue mostrando os pokemons de acordo com os caracteres parecidos.
+
+Adicionar vida, habilidades... mais caracteristicas do pokemon no card.
