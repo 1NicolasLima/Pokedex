@@ -4,7 +4,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
-export default function PokemonCard({ name, image }) {
+export default function PokemonCard({ name, image, types }) {
+
+    const typeHandler = () => {
+        if (types[1]) {
+            return types[0].type.name + " " + types[1].type.name
+        }
+        return types[0].type.name
+    }
+
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
@@ -15,6 +23,9 @@ export default function PokemonCard({ name, image }) {
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {name}
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                    {typeHandler()}
                 </Typography>
             </CardContent>
             {/* <CardActions>

@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
 import PokemonCard from "../components/PokemomCard";
+import { Skeletons } from "../components/Skeletons";
 
 export const Home = () => {
 
@@ -14,7 +15,7 @@ export const Home = () => {
 
     const getPokemons = () => {
         var endpoints = []
-        for (var i = 1; i < 50; i++) {
+        for (var i = 1; i < 100; i++) {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
         axios.all(endpoints.map((endpoints) => axios.get(endpoints))).then((res) => setPokemons(res)).catch((err) => console.log(err))
@@ -45,11 +46,13 @@ export const Home = () => {
             <Navbar pokemonFilter={pokemonFilter} />
             <Container maxWidth="false">
                 <Grid container spacing={3}>
-                    {pokemons.map((pokemon, key) => (
-                        <Grid item xs={3} key={key}>
-                            <PokemonCard name={pokemon.data.name} image={pokemon.data.sprites.front_default} />
-                        </Grid>
-                    ))}
+                    {pokemons.length === 0 ? <Skeletons /> :
+                        pokemons.map((pokemon, key) => (
+                            <Grid item xs={12} sm={6} md={4} lg={2} key={key}>
+                                <PokemonCard name={pokemon.data.name} image={pokemon.data.sprites.front_default}
+                                    types={pokemon.data.types} />
+                            </Grid>
+                        ))}
                 </Grid>
             </Container>
         </div>
