@@ -1,10 +1,10 @@
-import { Grid } from "@mui/material";
-import { Container } from "@mui/system";
+import { Container, Grid } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
 import PokemonCard from "../components/PokemomCard";
 import { Skeletons } from "../components/Skeletons";
+import './Home.css';
 
 export const Home = () => {
 
@@ -15,7 +15,7 @@ export const Home = () => {
 
     const getPokemons = () => {
         var endpoints = []
-        for (var i = 1; i < 100; i++) {
+        for (var i = 1; i < 10; i++) {
             endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
         }
         axios.all(endpoints.map((endpoints) => axios.get(endpoints))).then((res) => setPokemons(res)).catch((err) => console.log(err))
@@ -29,6 +29,7 @@ export const Home = () => {
         var filteredPokemons = [];
         if (name === "") {
             getPokemons()
+
         }
         for (var i in pokemons) {
             if (pokemons[i].data.name.includes(name)) {
@@ -44,6 +45,43 @@ export const Home = () => {
     return (
         <div>
             <Navbar pokemonFilter={pokemonFilter} />
+            <div className="pokedex">
+                <div className="left">
+                    <div className="logo"></div>
+                    <div className="bg-curve1_left"></div>
+                    <div className="bg-curve2_left"></div>
+                    <div className="curve1_left">
+                        <div className="buttonGlass">
+                            <div className="reflect"></div>
+                        </div>
+                        <div className="miniButtonGlass1"></div>
+                        <div className="miniButtonGlass2"></div>
+                        <div className="miniButtonGlass3"></div>
+                    </div>
+                    <div className="curve2_left">
+                        <div className="junction">
+                            <div className="junction1"></div>
+                            <div className="junction2"></div>
+                        </div>
+                    </div>
+                    <div className="screen">
+                        <div className="topPicture">
+                            <div className="buttontopPicture1"></div>
+                            <div className="buttontopPicture2"></div>
+                        </div>
+                        <div className="picture">
+
+                        </div>
+                        <div className="buttonbottomPicture"></div>
+                        <div className="speakers">
+                            <div className="sp"></div>
+                            <div className="sp"></div>
+                            <div className="sp"></div>
+                            <div className="sp"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <Container maxWidth="false">
                 <Grid container spacing={3}>
                     {pokemons.length === 0 ? <Skeletons /> :
