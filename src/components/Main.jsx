@@ -7,7 +7,7 @@ const Main = () => {
     //states
     const [pokeData, setPokeData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
+    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/")
     const [nextUrl, setNextUrl] = useState();
     const [prevUrl, setPrevUrl] = useState();
 
@@ -44,8 +44,8 @@ const Main = () => {
     //useEffect in pokeFun()
 
     useEffect(() => {
-        pokeFun()
-    }, [url]);
+        pokeFun();
+    }, [url])
 
     return (
         <div>
