@@ -3,13 +3,24 @@ import './Card.css';
 
 
 
-const Card = () => {
+const Card = ({ pokemon, loading }) => {
+    console.log(pokemon)
     return (
-        <div className="card">
-            <h2>1</h2>
-            <img src="" alt="" />
-        </div>
-
+        <>
+            {
+                loading ? <h1>Loading...</h1> : pokemon.map((item) => {
+                    return (
+                        <>
+                            <div className="card">
+                                <h2>{item.id}</h2>
+                                <img src={item.sprites.front_default} alt="" />
+                                <h2>{item.name}</h2>
+                            </div>
+                        </>
+                    )
+                })
+            }
+        </>
     )
 }
 export default Card
