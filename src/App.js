@@ -1,10 +1,12 @@
 
 import './App.css';
-import { Home } from './pages/Home';
+import Main from './components/Main';
+import './components/style.css';
+
 
 function App() {
   return (
-    <Home />
+    <Main />
   );
 }
 
