@@ -4,7 +4,6 @@ import Card from "./PokemomCard/Card";
 import Pokeinfo from "./PokemomCard/Pokeinfo";
 
 const Main = () => {
-
     //states
     const [pokeData, setPokeData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -36,6 +35,7 @@ const Main = () => {
             //console.log(result.data)
             setPokeData(state => {
                 state = [...state, result.data]
+                state.sort((a, b) => a.id > b.id ? 1 : -1)
                 return state;
             })
         })
